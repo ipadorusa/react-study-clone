@@ -9,7 +9,28 @@ const ProductDetail = () => {
     method: 'GET',
     path: `/products/${id}`
   }))
-  return(<div>ProductDetail</div>)
+  if(!data) return null;
+
+  const {
+    category,
+    title,
+    image,
+    description,
+    price,
+    rating: {
+      rate
+    }
+  } = data;
+  return(
+  <div className="product-detail">
+    <p className="product-detail__category">{category}</p>
+    <p className="product-detail__title">{title}</p>
+    <img className="product-detail__image " src={image} alt="" />
+    <p className="product-detail__description">{description}</p>
+    <p className="product-detail__price">{price}</p>
+    <p className="product-detail__rate">{rate}</p>
+  </div>
+  )
 }
 
 export default ProductDetail
