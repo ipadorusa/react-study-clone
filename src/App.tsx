@@ -1,8 +1,9 @@
 import { QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools'
 import { useRoutes } from 'react-router-dom';
-import { getClient } from './pages/queryClient';
+import { getClient } from './queryClient';
 import { routes } from './routes';
+import './scss/index.scss';
 
 function App() {
   const element = useRoutes(routes);

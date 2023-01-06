@@ -6,6 +6,10 @@ import {
   QueryClientProvider,
 } from 'react-query'
 
+type AnyOBJ = {
+  [key:string]: any
+}
+
 export const getClient = (() => {
   let client: QueryClient | null = null;
   return () => {
