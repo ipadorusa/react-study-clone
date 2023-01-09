@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import { Product } from '../../graphql/products';
+import { useCartItem } from '../../recoils/cart';
 
 const ProductItem = ({ id, imageUrl, price, title, description, createdAt }: Product) => {
+  const isCart = useCartItem();
   return (
     <li className='product-item'>
       <Link to={`/products/${id}`}>
