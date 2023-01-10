@@ -1,9 +1,13 @@
+import { useMutation } from 'react-query';
 import { Link } from 'react-router-dom';
+import { ADD_CART } from '../../graphql/cart';
 import { Product } from '../../graphql/products';
-import { useCartItem } from '../../recoils/cart';
+import { graphqlFetcher } from '../../queryClient';
 
 const ProductItem = ({ id, imageUrl, price, title, description, createdAt }: Product) => {
-  const isCart = useCartItem();
+  const { mutate: addCart } = useMutation((id: string) =>
+    graphqlFetcher(ADD_CART, { id }),
+  );
   return (
     <li className='product-item'>
       <Link to={`/products/${id}`}>
@@ -11,7 +15,9 @@ const ProductItem = ({ id, imageUrl, price, title, description, createdAt }: Pro
         <img className='product-item__image' src={imageUrl} />
         <span className='product-item__price'>${price}</span>
       </Link>
-      <button className='product-item__add-cart'>담기</button>
+      <button className='product-item__add-cart' onClick={() => addCart(id)}>
+        담기
+      </button>
     </li>
   );
 };

@@ -1,4 +1,3 @@
-import React from 'react';
 import GlobalLayout from './pages/_layout';
 import Index from './pages/index';
 import ProductsIndex from './pages/products/index';
